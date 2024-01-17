@@ -1,0 +1,55 @@
+Resumo Doc:
+Objetivo:
+Mecanismo automático de:
+Cálculo do Nível de Sujeira.
+
+1. 2 STRINGS são USADAS para COMPARAÇÃO DO EFEITO DE SUJIDADE.
+2. Strings são monitoradas (por meio de sensores de corrente e tensão) para medir a energia gerada.
+3. Dados recolhidos pelos sensores devem ser registrados a cada 10 minutos (ou menos).
+4. 1 das strings é marcada como String Limpa: limpa todas as segundas-ferias de manhã.
+5. String suja: limpa apenas no momento em que toda a UFV é limpa.
+
+
+-> Marcar 2 strings da UFV.
+-> Limpar essas 2 strings, todas as semanas (no mesmo dia e mesmo horário), durante 4 semanas consecutivas.
+
++Cálculo do Offset (entre as strings):
+offset = (Gc - Gd)/Gc
+
+Gc: - String com geração cumulativa mais alta -- STRING LIMPA.
+    - Calculada pela adição de todos os dados de potência, registrados a cada 10 minutos, durante as 4 semanas.
+    - Esta string deve ser limpa todas as segundas-ferias de manhã, após o período de 4 semanas, quando o cálculo de compensação é finalizado -- será a string Limpa.
+    
+Gd: - String com geração cumulativa mais baixa -- STRING SUJA.
+    - Calculada pela adição de todos os dados instantâneos de energia, registrados a cada 10 minutos, durante as 4 semanas.
+    - Esta string deve ser limpa apenas quando todos os módulos da usina forem limpos -- será a string suja.
+
+Após as 4 semanas do cálculo do offset:
+- String Limpa deve ser limpa todas as semanas no mesmo dia/hora (?? não era segunda).
+- String Suja apenas quando todos os módulos são limpos.
+
++Index de Sujeira/Sujidade D(i) para um período (i):
+D(i) = (Gc(i) - Gd(i))/Gc(i)
+Gc(i) = Gc(i) * (1 - offset)
+
+i:      um determinado período de x minutos considerado
+D(i):   o índice de sujidade
+Gc(i):  Potência registrada pela String Limpa, para o período (i), corrigida pelo Offset
+Gd(i):  Potência registrada pela String Suja, para o período (i)
+
++Índice semanal de sujidade da UFV
+Dm = [ summation from 1 to n of (Dk(i) - Gc(i)) ]/[ summation from 1 to n of (Gc(i)) ]
+
+n: - Número de períodos de x minutos decorridos desde a última vez que a String Limpa foi limpa.
+   - Deve ser calculado semanalmente, todas as segundas-ferias de manhã ANTES DA LIMPEZA da String.
+   
++Alarme de Nível de Sujeira Elevado:
+Implementação de um alarme no sistema de monitoramento, para quando Dm for superior a 3%.
+   
+
+
+https://www.fracsun.com/?gclid=EAIaIQobChMIk9OVm8PkgwMVoFhIAB1G9QUrEAAYASAAEgLgnPD_BwE
+https://www.fracsun.com/post/whitepaper-photovoltaic-vs-optical-soiling-measurement
+https://www.pv-magazine.com/2023/01/17/soiling-a-multibillion-dollar-issue/
+https://www.campbellsci.com/dustvue
+    https://ug.linkedin.com/posts/leonardomicheli_estimating-photovoltaic-soiling-activity-7049023040797474817-es-o
