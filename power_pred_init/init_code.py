@@ -157,7 +157,7 @@ for units1 in units_first_layer:
         model_LSTM.add(Dense(1, activation='linear', kernel_initializer=HeNormal()))
 
         # Compile the model
-        model_LSTM.compile(optimizer=custom_optimizer, loss='mse') # Loss fn = Mean Squared Error
+        model_LSTM.compile(optimizer=custom_optimizer, loss='mse') # Loss function = Mean Squared Error
 
         # Append the model to the list
         units1_models.append(model_LSTM)
