@@ -1,0 +1,43 @@
+--casaforte
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-03-01 00:00:00',1120209.0,0.75,230800.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-04-01 00:00:00',1072849.0,0.77,214000.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-05-01 00:00:00',1023555.0,0.78,202400.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-06-01 00:00:00',978128.0,0.79,190500.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-07-01 00:00:00',1072849.0,0.79,209600.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-08-01 00:00:00',1193665.0,0.78,236300.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-09-01 00:00:00',1208163.0,0.77,243600.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-10-01 00:00:00',1180133.0,0.75,244400.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-11-01 00:00:00',1066083.0,0.76,216500.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (108,'2024-12-01 00:00:00',1140506.0,0.77,216500.0);
+--axs
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-03-01 00:00:00',517500.0,0.76,208200.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-04-01 00:00:00',489960.0,0.78,187800.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-05-01 00:00:00',468080.0,0.79,173200.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-06-01 00:00:00',431000.0,0.79,158400.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-07-01 00:00:00',474360.0,0.79,174000.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-08-01 00:00:00',570980.0,0.8,210600.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-09-01 00:00:00',521740.0,0.77,206300.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-10-01 00:00:00',531740.0,0.75,219600.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-11-01 00:00:00',470040.0,0.74,197900.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (6,'2024-12-01 00:00:00',518990.0,0.77,212100.0);
+--comerc
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-03-01 00:00:00',742654.0,0.63,185400.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-09-01 00:00:00',797717.0,0.66,204100.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-10-01 00:00:00',769484.0,0.53,198200.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-11-01 00:00:00',660947.0,0.55,165200.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-12-01 00:00:00',713206.0,0.59,176700.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-04-01 00:00:00',704605.0,0.74,176900.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-05-01 00:00:00',696752.0,0.73,176100.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-06-01 00:00:00',691984.0,0.69,169300.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-07-01 00:00:00',736016.0,0.74,185200.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (80,'2024-08-01 00:00:00',818284.0,0.67,203400.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-03-01 00:00:00',994147.0,0.75,181400.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-04-01 00:00:00',982720.0,0.75,178700.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-05-01 00:00:00',102938.0,0.78,181900.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-06-01 00:00:00',175400.0,0.79,175400.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-07-01 00:00:00',105581.0,0.77,188100.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-08-01 00:00:00',112020.0,0.75,205800.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-09-01 00:00:00',104729.0,0.74,194900.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-10-01 00:00:00',101983.0,0.74,187600.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-11-01 00:00:00',891054.0,0.77,158800.0);
+INSERT INTO expected_data (power_station_id, date, energy, performance_ratio, irradiance) VALUES (88,'2024-12-01 00:00:00',951657.0,0.77,168700.0);
