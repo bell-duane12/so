@@ -180,7 +180,7 @@ y = P_Gen_data[target].values.reshape(-1, 1)
 
 # Normalize the features using Min-Max scaling
 scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
+X_scaled = scaler.fit_transform(X) # Scaled before splitting, so this result, as I suspected, is probably overly optimistic (specially comparing to articles I've seen).
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, shuffle=False)
