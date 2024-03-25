@@ -1,0 +1,63 @@
+bell@eagle:~$ sudo su - postgres
+postgres@eagle:~$ psql
+psql (13.14 (Debian 13.14-0+deb11u1))
+Type "help" for help.
+
+postgres=# CREATE USER ssit WITH PASSWORD '4t1ufvSGD';
+CREATE ROLE
+postgres=# CREATE DATABASE ssit_ufv OWNER ssit;
+CREATE DATABASE
+postgres=# pwd
+postgres-# quit
+Use \q to quit.
+postgres-# \q
+postgres@eagle:~$ pwd
+/var/lib/postgresql
+
+ALTER ROLE ssit WITH SUPERUSER;
+
+postgres@eagle:~$ psql
+psql (13.14 (Debian 13.14-0+deb11u1))
+Type "help" for help.
+
+postgres@eagle:~$ psql -h localhost -U ssit -d ssit_ufv < bkpregressao.sql
+Password for user ssit: 
+SET
+SET
+SET
+SET
+SET
+ set_config 
+------------
+ 
+(1 row)
+
+SET
+SET
+SET
+SET
+CREATE FUNCTION
+ALTER FUNCTION
+CREATE FUNCTION
+ALTER FUNCTION
+......
+ALTER TABLE
+ALTER TABLE
+REFRESH MATERIALIZED VIEW
+
+#teste
+postgres@eagle:~$ psql -h localhost -U ssit -d ssit_ufv
+Password for user ssit: 
+psql (13.14 (Debian 13.14-0+deb11u1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+ssit_ufv=# select * from to_model;
+
+
+
+
+
+
+
+
