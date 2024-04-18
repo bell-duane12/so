@@ -27,7 +27,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.optimizers.schedules import ExponentialDecay
 import datetime
 import matplotlib.pyplot as plt
-
+from sklearn.preprocessing import RobustScaler
 
 # Define função de filtragem de outliers.
 def filter_outliers(data_frame, whisker_factor=1.5):
@@ -806,7 +806,7 @@ all_models_LSTM = []
 for units1 in units_first_layer:
     units1_models = []  
     for units2 in units_second_layer:
-        custom_optimizer = Adam(learning_rate=learning_rate_schedule, beta_1=0.9, beta_2=0.999, epsilon=1e-3)
+        custom_optimizer = Adam(learning_rate=learning_rate_schedule, beta_1=0.9, beta_2=0.999, epsilon=1e-8)
 
         model_LSTM = Sequential()
         model_LSTM.add(LSTM(units1, activation='relu', return_sequences=True, input_shape=(n_timesteps, n_features), kernel_initializer=HeNormal()))
@@ -822,17 +822,18 @@ for units1 in units_first_layer:
 
 full_iter = 100
 
-features = ['total_dc_power_4_all_invs', 'total_ac_power_4_all_invs', 'daily_yield_4_all_invs', 'year', 'month', 'day', 'hour', 'minute', 'second']
+features = ['total_dc_power_4_all_invs', 'total_ac_power_4_all_invs', 'total_yield_4_all_invs', 'year', 'month', 'day', 'hour', 'minute', 'second']
 target = 'daily_yield_4_all_invs'
 
 df = data_frame.reindex(columns=features)
 X = df.values
 y = data_frame[target].values.reshape(-1,1)
 
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X) 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=False)
 
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, shuffle=False)
+scaler = MinMaxScaler() #RobustScaler() 
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
 
 n_samples, n_features = X_train.shape
 n_timesteps = 1
