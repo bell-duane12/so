@@ -1,5 +1,62 @@
 import pandas
 import sqlalchemy
+from functools import reduce
+import sklearn.neighbors._base
+import sys
+sys.modules['sklearn.neighbors.base'] = sklearn.neighbors._base
+from missingpy import MissForest
+import warnings
+warnings.filterwarnings('ignore')
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from keras.models import Sequential
+from keras.layers import LSTM, Dense, GRU, Dropout
+from tensorflow.keras.initializers import HeNormal
+from keras.optimizers import Adam
+import tensorflow as tf
+from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.optimizers.schedules import ExponentialDecay
+import datetime
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import RobustScaler
+from sklearn.metrics import r2_score
+
+
+# Define função de filtragem de outliers.
+def filter_outliers(data_frame, whisker_factor=1.5):
+    """
+    Remoção de outliers pelo método IQR.
+    """ 
+    q1 = data_frame.quantile(0.25)
+    q3 = data_frame.quantile(0.75)
+    iqr = q3 - q1
+    outliers = (data_frame < (q1 - whisker_factor*iqr)) | (data_frame > (q3 + whisker_factor*iqr))
+    
+    # Método #1: Impute outliers (com a média, mediana, etc. --> vamos remover e imputar com machine learning depois)
+    #data_frame[outliers] = data_frame.mean()  # Substitui os outliers pela média
+    
+    # Método #2: Capping outliers (replace with nearest non-outlier value --> maintains overall distribution, while reducing influence of extreme values)
+    #data_frame[data_frame < (q1 - whisker_factor*iqr)] = q1 - whisker_factor*iqr  # cap low outliers
+    #data_frame[data_frame > (q3 + whisker_factor*iqr)] = q3 + whisker_factor*iqr  # cap high outliers
+    
+    # Método #3: Remove outliers
+    return data_frame[~outliers.any(axis=1)]
+
+
+
+
+# Define função de tratamento de valores inexistentes.
+def impute_missing_values(data_frame):
+    """
+    Imputa valores não existentes via machine learning, utilizando variante do método Random Forest.
+    """
+    complete_data = MissForest().fit_transform(data_frame)
+    return pandas.DataFrame(complete_data, columns=data_frame.columns)
+
+
+
+
+
 
 STA_CODE = '120'             # Código da Estação/Usina (nesse caso, a usina de Coromandel)
 QTD_UGS = 2                  # Quantidade de Unidades Geradoras (UGs) existentes na Usina
@@ -120,7 +177,8 @@ for variable, high_code in weather_variables_map.items():
              AND high_code=" + str(high_code) + ';'
     data[variable] = pandas.read_sql(query, con=connection)
     data[variable] = data[variable].rename(columns={'tm_value': variable})
-
+    data[variable] = data[variable].sort_values(by='event_date')
+    
 # Seleciona os dados de geração
 for variable, high_codes in generation_variables_map.items():
     for index, high_code in enumerate(high_codes, start=0):
@@ -128,4 +186,42 @@ for variable, high_codes in generation_variables_map.items():
                  AND event_date BETWEEN " + START_DATE + " AND " + END_DATE + "\
 		 AND high_code=" + str(high_code) + ';'
         data[variable][indexes_list[index]] = pandas.read_sql(query, con=connection)
-        data[variable][indexes_list[index]] = data[variable][indexes_list[index]].rename(columns={'tm_value': variable})
+        data[variable][indexes_list[index]] = data[variable][indexes_list[index]].rename(columns={'tm_value': variable + str(indexes_list[index])})
+        data[variable][indexes_list[index]] = data[variable][indexes_list[index]].sort_values(by='event_date')
+
+# Série temporal com todas as estampas de tempo
+full_timeseries = pandas.Series(pandas.date_range(start=data['irradiance']['event_date'].min().date(),
+                                                    end=data['irradiance']['event_date'].max().date() + pandas.Timedelta(days=1),
+                                                   freq=pandas.Timedelta('5min')), name="event_date")
+
+# Lista de referencias a todas as variáveis, acompanhadas pela timeseries 
+data_frame_refs = []
+for key, frame in data.items():
+    if key in generation_variables_map.keys():
+        for index in indexes_list:
+            data_frame_refs.append(full_timeseries)
+            data_frame_refs.append(data[key][index])
+            
+for key, variable_data in data.items():
+    if key in weather_variables_map.keys():
+        data_frame_refs.append(full_timeseries)
+        data_frame_refs.append(data[key])
+        
+# Merge (left-join) pelo timestamp mais próximo (tolerância máxima de 5 minutos)
+data_frame = reduce(lambda df_left, df_right: pandas.merge_asof(df_left, df_right,
+                                                                on='event_date',
+                                                                tolerance=pandas.Timedelta(5, 'minutes')), data_frame_refs)
+
+# Indexa a base de dados pelo timestamp
+data_frame = data_frame.set_index('event_date')
+
+# Verifica se há registros negativos para alguma das colunas
+for column in data_frame:
+    if (data_frame[column].any() < 0):
+        print('Coluna ' + column + ' possui valores negativos!')
+
+
+# Imputa valores não existentes via machine learning
+data_frame = impute_missing_values(data_frame)
+
+
