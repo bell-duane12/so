@@ -1,0 +1,3 @@
+Nesta pasta deverão ser amarzenados os documentos gerados pelo projetos tais como: logotipos
+
+Obs: Esta pasta não possuirá nenhum documento armazenado, os documentos deverão ser armanados na pasta: arte

@@ -1,0 +1,131 @@
+Usina de Coromandel - sta_code = 120
+Dados bd comerc producao de 2023-01-01 (1 Jan 2023) a 2024-03-31 (31 Mar 2024)
+
+
+http://192.168.2.21:8003/ssit-web/teleobjeto.xhtml:
+
+Solarimétrica da Usina (ETS: 251) ---------------------------------------------
+
+POA Irradiance:
+high_code=75953
+
+Temperatura do Ar:
+high_code=75954
+
+GHI (Global Horizontal Irradiance):
+high_code=75952
+
+Temperatura do Módulo:
+high_code=75957
+
+Velocidade do Vento:
+high_code=75956
+
+Umidade do Ar:
+high_code=75955
+
+---------------------------------------------------------------------
+
+Inversores UG1 ------------------------------------------------------
+
+UG1 - Inversor Sungrow 1  (ETS: 1010)
+Daily Power Yields, high_code=76050
+Total Power Yields, high_code=76051
+Total DC Power, high_code=76057
+Total active power, high_code=76064
+
+UG1 - Inversor Sungrow 2  (ETS: 1011)
+Daily Power Yields, high_code=76027
+Total Power Yields, high_code=76028
+Total DC Power, high_code=76034
+Total active power, high_code=76041
+
+UG1 - Inversor Sungrow 3  (ETS: 1012)
+Daily Power Yields, high_code=76073
+Total Power Yields, high_code=76074
+Total DC Power, high_code=76080
+Total active power, high_code=76087
+
+UG1 - Inversor Sungrow 4  (ETS: 1013)
+Daily Power Yields, high_code=76096
+Total Power Yields, high_code=76097
+Total DC Power, high_code=76103
+Total active power, high_code=76110
+
+UG1 - Inversor Sungrow 5  (ETS: 1014)
+Daily Power Yields, high_code=76119
+Total Power Yields, high_code=76120
+Total DC Power, high_code=76126
+Total active power, high_code=76133
+
+UG1 - Inversor Sungrow 6  (ETS: 1015)
+Daily Power Yields, high_code=76142
+Total Power Yields, high_code=76143
+Total DC Power, high_code=76149
+Total active power, high_code=76156
+
+UG1 - Inversor Sungrow 7  (ETS: 1016)
+Daily Power Yields, high_code=76165
+Total Power Yields, high_code=76166
+Total DC Power, high_code=76172
+Total active power, high_code=76179
+
+UG1 - Inversor Sungrow 8  (ETS: 1017)
+Daily Power Yields, high_code=76188
+Total Power Yields, high_code=76189
+Total DC Power, high_code=76195
+Total active power, high_code=76202
+
+-------------------------------------------------------------------
+
+
+Inversores UG2 ------------------------------------------------------
+
+UG2 - Inversor Sungrow 1  (ETS: 1110)
+Daily Power Yields, high_code=76211
+Total Power Yields, high_code=76212
+Total DC Power, high_code=76218
+Total active power, high_code=76225
+
+UG2 - Inversor Sungrow 2  (ETS: 1111)
+Daily Power Yields, high_code=76234
+Total Power Yields, high_code=76235
+Total DC Power, high_code=76241
+Total active power, high_code=76248
+
+UG2 - Inversor Sungrow 3  (ETS: 1112)
+Daily Power Yields, high_code=76257
+Total Power Yields, high_code=76258
+Total DC Power, high_code=76264
+Total active power, high_code=76271
+
+UG2 - Inversor Sungrow 4  (ETS: 1113)
+Daily Power Yields, high_code=76280
+Total Power Yields, high_code=76281
+Total DC Power, high_code=76287
+Total active power, high_code=76294
+
+UG2 - Inversor Sungrow 5  (ETS: 1114)
+Daily Power Yields, high_code=76303
+Total Power Yields, high_code=76304
+Total DC Power, high_code=76310
+Total active power, high_code=76317
+
+UG2 - Inversor Sungrow 6  (ETS: 1115)
+Daily Power Yields, high_code=76326
+Total Power Yields, high_code=76327
+Total DC Power, high_code=76333
+Total active power, high_code=76340
+
+UG2 - Inversor Sungrow 7  (ETS: 1116)
+Daily Power Yields, high_code=76349
+Total Power Yields, high_code=76350
+Total DC Power, high_code=76356
+Total active power, high_code=76363
+
+UG2 - Inversor Sungrow 8  (ETS: 1117)
+Daily Power Yields, high_code=76372
+Total Power Yields, high_code=76373
+Total DC Power, high_code=76379
+Total active power, high_code=76386
+---------------------------------------------------------------------
